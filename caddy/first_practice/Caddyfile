@@ -1,6 +1,6 @@
 demo.example.com {
-    root /var/www/demo.my165.ca/public
-    log /var/www/demo-my165-ca.log
+    root /var/www/demo.example.com/public
+    log /var/www/demo.example.com.log
     git {
         repo git@bitbucket.org:wyg27/demo.example.com.git
         key /root/.ssh/id_rsa
