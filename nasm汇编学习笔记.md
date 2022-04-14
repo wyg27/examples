@@ -40,7 +40,7 @@ message:  db        "Hello, World", 10      ; note the newline at the end
 
 > ld is defaulting to dynamic linking and tries to load crt1 which is looking for main. So specify static linking.
 
-（注：上面这段引用中提到的 `crt1` 可以参考“[Crt0](https://en.wikipedia.org/wiki/Crt0)”），或者直接看[这段解释](https://stackoverflow.com/questions/2709998/crt0-o-and-crt1-o-whats-the-difference)：
+上面这段引用中提到的 `crt1` 可以参考“[Crt0](https://en.wikipedia.org/wiki/Crt0)”，或者直接看[这段解释](https://stackoverflow.com/questions/2709998/crt0-o-and-crt1-o-whats-the-difference)：
 
 > Both crt0/crt1 do the same thing, basically do what is needed before calling main() (like initializing stack, setting irqs, etc.). You should link with one or the other but not both. They are not really libraries but really inline assembly code.
 > As far as I understand, crt comes in two "flavors"
