@@ -46,3 +46,7 @@ message:  db        "Hello, World", 10      ; note the newline at the end
 > As far as I understand, crt comes in two "flavors"
 > * crt1 is used on systems that support constructors and destructors (functions called before and after main and exit). In this case main is treated like a normal function call.
 > * crt0 is used on systems that do not support constructors/destructors.
+
+# 参考教程
+
+* 《纯汇编语言编写打飞机小游戏》https://blog.csdn.net/jiange_zh/article/details/47394337
