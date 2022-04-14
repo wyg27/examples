@@ -34,8 +34,15 @@ message:  db        "Hello, World", 10      ; note the newline at the end
 
 首先，执行 `nasm -fmacho64 hello.asm`，这一步在我的机器上没有问题。成功后可以见到名为 `hello.o` 的文件。
 
-然后，执行 `ld -e start -static hello.o -o hello`；如果成功可以见到一个可执行文件 `hello`，执行它看看是否符合预期。
+然后，执行 `ld -e start -static hello.o -o hello`；如果成功可以见到一个可执行文件 `hello`，执行它看看是否符合预期。（注：其中 `-e start`并不是必需的。）
 
 对此，[有人解释](https://stackoverflow.com/questions/52830484/nasm-cant-link-object-file-with-ld-on-macos-mojave)为：
 
 > ld is defaulting to dynamic linking and tries to load crt1 which is looking for main. So specify static linking.
+
+（注：上面这段引用中提到的 `crt1` 可以参考“[Crt0](https://en.wikipedia.org/wiki/Crt0)”），或者直接看[这段解释](https://stackoverflow.com/questions/2709998/crt0-o-and-crt1-o-whats-the-difference)：
+
+> Both crt0/crt1 do the same thing, basically do what is needed before calling main() (like initializing stack, setting irqs, etc.). You should link with one or the other but not both. They are not really libraries but really inline assembly code.
+> As far as I understand, crt comes in two "flavors"
+> * crt1 is used on systems that support constructors and destructors (functions called before and after main and exit). In this case main is treated like a normal function call.
+> * crt0 is used on systems that do not support constructors/destructors.
